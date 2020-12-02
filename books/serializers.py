@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book, Category
+from .models import Book, WishList
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,7 +12,7 @@ class BookSerializer(serializers.ModelSerializer):
             self.fields['image2'] = serializers.CharField(required=True)
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class WishListSearializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = WishList
         fields = ('__all__')

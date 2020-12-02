@@ -120,6 +120,7 @@ DJOSER = {
 
 
 SIMPLE_JWT = {
+    'USER_ID_FIELD': 'email',
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
     'AUTH_HEADER_TYPES': ('JWT',),

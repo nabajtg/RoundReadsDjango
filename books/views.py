@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Book, Category
-from .serializers import BookSerializer, CategorySerializer
+from .models import Book, WishList
+from .serializers import BookSerializer, WishListSearializer
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
 
@@ -8,32 +8,16 @@ from rest_framework.pagination import PageNumberPagination
 class SetPagination(PageNumberPagination):
     page_size = 12
 
+"""
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     pagination_class = SetPagination
     search_fields = ['title', 'desc', 'author']
     filter_backends = (filters.SearchFilter,)
-
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-class BookSaleViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.filter(condition='lightUsed')
-    serializer_class = BookSerializer
-    pagination_class = SetPagination
-    search_fields = ['title', 'desc', 'author']
-    filter_backends = (filters.SearchFilter,)
-
-"""
-class TestView(APIView):
-    def get(self, request):
-        test_data_var = request.query_params['testData']
-        page_num_var = request.query_params['pageNum']
 """
 
-class TestView(viewsets.ModelViewSet):
+class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     pagination_class = SetPagination
     search_fields = ['title', 'desc', 'author']
@@ -73,3 +57,8 @@ class TestView(viewsets.ModelViewSet):
             queryset = Book.objects.all()    
 
         return queryset
+
+
+class WishListViewSet(viewsets.ModelViewSet):
+    queryset = WishList.objects.all()
+    serializer_class = WishListSearializer

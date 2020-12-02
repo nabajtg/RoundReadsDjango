@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 class Book(models.Model):
@@ -12,6 +11,8 @@ class Book(models.Model):
     availability = models.CharField(max_length=20)
     image1 = models.TextField()
     image2 = models.TextField()
+    posted_by = models.CharField(max_length=255)
 
-class Category(models.Model):
-    name = models.CharField(max_length=50)
+class WishList(models.Model):
+    user_email = models.CharField(max_length=255, unique=True, primary_key=True)
+    wishlist = models.JSONField(blank=True)
