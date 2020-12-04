@@ -14,5 +14,5 @@ class Book(models.Model):
     posted_by = models.CharField(max_length=255)
 
 class WishList(models.Model):
-    user_email = models.CharField(max_length=255, unique=True, primary_key=True)
+    user_id = models.CharField(max_length=255, unique=True, primary_key=True)
     wishlist = models.JSONField(blank=True)
