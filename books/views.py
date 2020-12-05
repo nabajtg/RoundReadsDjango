@@ -8,14 +8,6 @@ from rest_framework.pagination import PageNumberPagination
 class SetPagination(PageNumberPagination):
     page_size = 12
 
-"""
-class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    pagination_class = SetPagination
-    search_fields = ['title', 'desc', 'author']
-    filter_backends = (filters.SearchFilter,)
-"""
 
 class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
@@ -62,3 +54,13 @@ class BookViewSet(viewsets.ModelViewSet):
 class WishListViewSet(viewsets.ModelViewSet):
     queryset = WishList.objects.all()
     serializer_class = WishListSearializer
+
+class GetWishListViewSet(viewsets.ModelViewSet):
+    serializer_class = BookSerializer
+    def get_queryset(self):
+        print(self.request.query_params.getlist('wishlist[]'))
+        
+        wishlist = self.request.query_params.getlist('wishlist[]')
+
+        queryset = Book.objects.filter(id__in=wishlist)
+        return queryset

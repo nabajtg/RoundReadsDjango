@@ -8,7 +8,7 @@ from books import views
 router = routers.DefaultRouter()
 router.register('books', views.BookViewSet, basename='books')
 router.register('wishlist', views.WishListViewSet, basename='wishlist')
-#router.register('books_new/<str:anything>', views.BookSaleViewSet, basename='books_new')
+router.register('get_wishlist', views.GetWishListViewSet, basename='getwishList')
 #router.register('test', views.TestView, basename='test')
 
 urlpatterns = [
