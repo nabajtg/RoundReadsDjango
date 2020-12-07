@@ -50,6 +50,12 @@ class BookViewSet(viewsets.ModelViewSet):
 
         return queryset
 
+class CurrentUserBookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    search_fields = ['=posted_by']
+    filter_backends = (filters.SearchFilter,)
+
 
 class WishListViewSet(viewsets.ModelViewSet):
     queryset = WishList.objects.all()
