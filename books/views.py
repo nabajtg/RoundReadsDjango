@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Book, WishList
-from .serializers import BookSerializer, WishListSearializer
+from .models import Book, WishList, Dates
+from .serializers import BookSerializer, WishListSearializer, DateSerializer
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
 
@@ -53,7 +53,7 @@ class BookViewSet(viewsets.ModelViewSet):
 class CurrentUserBookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    search_fields = ['=posted_by']
+    search_fields = ['=poster_email']
     filter_backends = (filters.SearchFilter,)
 
 
@@ -70,3 +70,7 @@ class GetWishListViewSet(viewsets.ModelViewSet):
 
         queryset = Book.objects.filter(id__in=wishlist)
         return queryset
+
+class DateViewSet(viewsets.ModelViewSet):
+    serializer_class = DateSerializer
+    queryset = Dates.objects.all()

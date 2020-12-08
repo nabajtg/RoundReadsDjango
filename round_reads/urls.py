@@ -10,6 +10,7 @@ router.register('books', views.BookViewSet, basename='books')
 router.register('wishlist', views.WishListViewSet, basename='wishlist')
 router.register('get_wishlist', views.GetWishListViewSet, basename='getwishList')
 router.register('get_user_books', views.CurrentUserBookViewSet, basename='user_books')
+router.register('dates', views.DateViewSet, basename='dates')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

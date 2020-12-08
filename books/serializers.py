@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book, WishList
+from .models import Book, WishList, Dates
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,4 +15,9 @@ class BookSerializer(serializers.ModelSerializer):
 class WishListSearializer(serializers.ModelSerializer):
     class Meta:
         model = WishList
+        fields = ('__all__')
+
+class DateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Dates
         fields = ('__all__')
