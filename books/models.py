@@ -35,3 +35,12 @@ class Request(models.Model):
     message = models.CharField(max_length=500)
     requester_name = models.CharField(max_length=255)
     requester_email = models.CharField(max_length=255)
+
+class Response(models.Model):
+    book_id = models.CharField(max_length=5)
+    customer_email = models.CharField(max_length=255)
+    accepted = models.BooleanField()
+    seller_contact = models.CharField(max_length=255, blank=True)
+    message = models.CharField(max_length=500)
+
+
