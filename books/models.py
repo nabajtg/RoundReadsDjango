@@ -26,3 +26,12 @@ class WishList(models.Model):
 class Dates(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateTimeField(auto_now_add=True, auto_now=False)
+
+class Request(models.Model):
+    book_id = models.CharField(max_length=5)
+    request_for = models.CharField(max_length=20)
+    borrowing_offer = models.IntegerField(blank=True)
+    buying_offer = models.IntegerField(blank=True)
+    message = models.CharField(max_length=500)
+    requester_name = models.CharField(max_length=255)
+    requester_email = models.CharField(max_length=255)
