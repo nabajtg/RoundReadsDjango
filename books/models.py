@@ -36,14 +36,9 @@ class Request(models.Model):
     requester_name = models.CharField(max_length=255)
     requester_email = models.CharField(max_length=255)
     seller_contact = models.CharField(max_length=255, blank=True, null=True)
-    accepted = models.BooleanField(default=False)
+    status = models.CharField(max_length=10, default="pending")
     response = models.CharField(max_length=500, blank=True, null=True)
+    time = models.DateTimeField(auto_now_add=True, auto_now=False)
 
-class Response(models.Model):
-    book_id = models.CharField(max_length=5)
-    customer_email = models.CharField(max_length=255)
-    accepted = models.BooleanField()
-    seller_contact = models.CharField(max_length=255, blank=True)
-    message = models.CharField(max_length=500)
 
 

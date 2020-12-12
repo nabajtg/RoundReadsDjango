@@ -77,12 +77,7 @@ class DateViewSet(viewsets.ModelViewSet):
 
 class RequestViewSet(viewsets.ModelViewSet):
     serializer_class = RequestSerializer
-    queryset = Request.objects.all()
-    search_fields = ['=book_id']
+    queryset = Request.objects.order_by('-time')
+    search_fields = ['=book_id', '=requester_email']
     filter_backends = (filters.SearchFilter,)
 
-class ResponseViewSet(viewsets.ModelViewSet):
-    serializer_class = ResponseSerializer
-    queryset = Response.objects.all()
-    search_fields = ['=book_id']
-    filter_backends = (filters.SearchFilter,)
