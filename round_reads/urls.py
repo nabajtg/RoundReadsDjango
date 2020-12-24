@@ -4,7 +4,7 @@ from django.conf.urls import url
 from rest_framework import routers
 
 from books import views
-from blogs.views import BlogViewSet, TrendingBlogViewSet
+from blogs.views import BlogViewSet, TrendingBlogViewSet, UserBlogViewSet
 
 router = routers.DefaultRouter()
 router.register('books', views.BookViewSet, basename='books')
@@ -15,6 +15,7 @@ router.register('dates', views.DateViewSet, basename='dates')
 router.register('requests', views.RequestViewSet, basename='requests')
 router.register('blogs', BlogViewSet, basename='blogs')
 router.register('trending_blogs', TrendingBlogViewSet, basename='trendsblogs')
+router.register('user_blogs', UserBlogViewSet, basename='userblogs')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
