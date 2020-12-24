@@ -56,6 +56,19 @@ class CurrentUserBookViewSet(viewsets.ModelViewSet):
     search_fields = ['=poster_email']
     filter_backends = (filters.SearchFilter,)
 
+class SimilarBooksViewSet(viewsets.ModelViewSet):
+    #queryset = Book.objects.filter(category='engineering')[:5]
+    serializer_class = BookSerializer
+    #search_fields = ['=category']
+    filter_backends = (filters.SearchFilter,)
+
+    def get_queryset(self):
+        category = self.request.query_params.getlist('category')
+        print(category)
+        queryset = Book.objects.filter(category__in=category)[:6]
+        return queryset
+
+
 
 class WishListViewSet(viewsets.ModelViewSet):
     queryset = WishList.objects.all()
