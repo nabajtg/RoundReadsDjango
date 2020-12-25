@@ -77,13 +77,13 @@ DATABASES = {
     }
 }
 
-"""
+
 EMAIL_USE_TLS=True
 EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_HOST_USER='booksystem007@gmail.com'
 EMAIL_HOST_PASSWORD='ncvgrwydkkyqonxc'
 EMAIL_PORT=587
-"""
+
 
 AUTH_USER_MODEL = 'authentications.CustomUser'
 
@@ -111,6 +111,13 @@ REST_FRAMEWORK = {
 DJOSER = {
     'LOGIN_FIELD' : 'email',
     'USER_CREATE_PASSWORD_RETYPE' : True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION' : True,
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND' : True,
+    'SEND_CONFIRMATION_EMAIL' : True,
+    'SET_PASSWORD_RETYPE' : True,
+    'ACTIVATION_URL' : 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL' : True,
     'SERIALIZERS' :{
         'user_create' : 'authentications.serializers.UserCreateSerializer',
         'user' : 'authentications.serializers.UserCreateSerializer',

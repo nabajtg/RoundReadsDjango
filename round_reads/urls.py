@@ -6,6 +6,8 @@ from rest_framework import routers
 from books import views
 from blogs.views import BlogViewSet, TrendingBlogViewSet, UserBlogViewSet
 
+from django.views.generic.base import RedirectView
+
 router = routers.DefaultRouter()
 router.register('books', views.BookViewSet, basename='books')
 router.register('wishlist', views.WishListViewSet, basename='wishlist')
@@ -23,4 +25,6 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     url(r'^api/', include(router.urls)),
+    path('activate/<uid>/<token>/', RedirectView.as_view(url='http://127.0.0.1:3000/activate/%(uid)s/%(token)s/')),
+    path('password_reset/{uid}/{token}', RedirectView.as_view(url='http://127.0.0.1:3000/'))
 ]

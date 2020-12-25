@@ -28,7 +28,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     dept = models.CharField(max_length=255, blank=True)
     roll = models.CharField(max_length=10, blank=True)
     hostel = models.CharField(max_length=255, blank=True)
-    is_active = models.BooleanField(default=True, blank=True)
+    is_active = models.BooleanField(default=False, blank=True)
     is_staff = models.BooleanField(default=False, blank=True)
     wishlist = models.JSONField(blank=True, default=dict)
     liked_blogs = models.JSONField(blank=True, default=dict)
