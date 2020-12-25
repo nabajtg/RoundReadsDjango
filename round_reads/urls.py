@@ -25,6 +25,6 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     url(r'^api/', include(router.urls)),
-    path('activate/<uid>/<token>/', RedirectView.as_view(url='http://127.0.0.1:3000/activate/%(uid)s/%(token)s/')),
-    path('password_reset/{uid}/{token}', RedirectView.as_view(url='http://127.0.0.1:3000/'))
+    path('activate/<uid>/<token>/', RedirectView.as_view(url='http://localhost:3000/activate/%(uid)s/%(token)s/')),
+    path('password/reset/confirm/<uid>/<token>/', RedirectView.as_view(url='http://localhost:3000/password/reset/confirm/%(uid)s/%(token)s/'))
 ]

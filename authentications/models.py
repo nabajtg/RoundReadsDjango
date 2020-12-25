@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+import jsonfield
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, fname, mname, lname, phone, address, yearOfEnrollment, yearOfGraduation, dept, roll, hostel, wishlist, liked_blogs, password=None):
@@ -30,8 +31,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     hostel = models.CharField(max_length=255, blank=True)
     is_active = models.BooleanField(default=False, blank=True)
     is_staff = models.BooleanField(default=False, blank=True)
-    wishlist = models.JSONField(blank=True, default=dict)
-    liked_blogs = models.JSONField(blank=True, default=dict)
+    wishlist = jsonfield.JSONField(blank=True, default=dict)
+    liked_blogs = jsonfield.JSONField(blank=True, default=dict)
 
     objects = UserAccountManager()
 

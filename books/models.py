@@ -21,7 +21,7 @@ class Book(models.Model):
 
 class WishList(models.Model):
     user_id = models.CharField(max_length=255, unique=True, primary_key=True)
-    wishlist = models.JSONField(blank=True)
+    #wishlist = models.JSONField(blank=True)
 
 class Dates(models.Model):
     name = models.CharField(max_length=255)

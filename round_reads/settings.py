@@ -25,7 +25,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'authentications',
     'books',
-    'blogs'
+    'blogs',
+    'djangotoolbox',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -63,6 +66,18 @@ WSGI_APPLICATION = 'round_reads.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django_mongodb_engine',
+        "NAME": 'round_reads_database',
+        "HOST": 'mongodb+srv://booksystem:booksystem123@cluster0.ggvx7.mongodb.net/round_reads_database?retryWrites=true&w=majority',
+        "USER": 'booksystem',
+        "PASSWORD": 'booksystem123',
+        
+    }
+}
+"""
 
 DATABASES = {
     'default': {
@@ -76,6 +91,7 @@ DATABASES = {
         }, 
     }
 }
+
 
 
 EMAIL_USE_TLS=True
