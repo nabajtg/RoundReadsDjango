@@ -1,11 +1,12 @@
 import os
 from datetime import timedelta
+from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'pi9g-nn-nzkqn6cgpzwgcy_%$c&e*nx&)dfk=nrm#z@6k5uq7='
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -66,38 +67,25 @@ WSGI_APPLICATION = 'round_reads.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django_mongodb_engine',
-        "NAME": 'round_reads_database',
-        "HOST": 'mongodb+srv://booksystem:booksystem123@cluster0.ggvx7.mongodb.net/round_reads_database?retryWrites=true&w=majority',
-        "USER": 'booksystem',
-        "PASSWORD": 'booksystem123',
-        
-    }
-}
-"""
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         "CLIENT": {
-           "name": 'round_reads_database',
-           "host": 'mongodb+srv://booksystem:booksystem123@cluster0.ggvx7.mongodb.net/round_reads_database?retryWrites=true&w=majority',
-           "username": 'booksystem',
-           "password": 'booksystem123',
-           "authMechanism": 'SCRAM-SHA-1',
+           "name": config('name'),
+           "host": config('host'),
+           "username": config('username'),
+           "password": config('password'),
+           "authMechanism": config('authMechanism'),
         }, 
     }
 }
 
-
-
 EMAIL_USE_TLS=True
 EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER='booksystem007@gmail.com'
-EMAIL_HOST_PASSWORD='ncvgrwydkkyqonxc'
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT=587
 
 
